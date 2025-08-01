@@ -1,1 +1,355 @@
  
+<section class="projects-grid-section" id="projectsGrid">
+    <div class="projects-container">
+        <!-- Section Header -->
+        <div class="projects-header">
+            <div class="header-content">
+                <h1 class="projects-title">My Projects</h1>
+                <p class="projects-subtitle">
+                    A collection of mobile applications, web projects, and development work 
+                    showcasing my expertise in Flutter and modern technologies.
+                </p>
+            </div>
+            
+            <div class="projects-stats">
+                <div class="stat-item">
+                    <span class="stat-number" id="totalProjects">24</span>
+                    <span class="stat-label">Projects</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="totalTechnologies">12</span>
+                    <span class="stat-label">Technologies</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="totalClients">18</span>
+                    <span class="stat-label">Happy Clients</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Projects Controls -->
+        <div class="projects-controls">
+            <!-- Search Bar -->
+            <div class="search-container">
+                <div class="search-input-wrapper">
+                    <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"/>
+                        <path d="m21 21-4.35-4.35"/>
+                    </svg>
+                    <input 
+                        type="text" 
+                        id="projectSearch" 
+                        class="search-input" 
+                        placeholder="Search projects..."
+                        autocomplete="off"
+                    >
+                    <button class="search-clear hidden" id="searchClear" aria-label="Clear search">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="18" y1="6" x2="6" y2="18"/>
+                            <line x1="6" y1="6" x2="18" y2="18"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Filter Controls -->
+            <div class="filter-controls">
+                <!-- Category Filter -->
+                <div class="filter-group">
+                    <label class="filter-label">Category:</label>
+                    <select id="categoryFilter" class="filter-select">
+                        <option value="all">All Categories</option>
+                        <option value="mobile">Mobile Apps</option>
+                        <option value="web">Web Applications</option>
+                        <option value="ui-ux">UI/UX Design</option>
+                        <option value="tools">Developer Tools</option>
+                        <option value="games">Games</option>
+                    </select>
+                </div>
+
+                <!-- Technology Filter -->
+                <div class="filter-group">
+                    <label class="filter-label">Technology:</label>
+                    <select id="technologyFilter" class="filter-select">
+                        <option value="all">All Technologies</option>
+                        <option value="flutter">Flutter</option>
+                        <option value="dart">Dart</option>
+                        <option value="firebase">Firebase</option>
+                        <option value="react">React</option>
+                        <option value="nodejs">Node.js</option>
+                        <option value="javascript">JavaScript</option>
+                    </select>
+                </div>
+
+                <!-- Sort Options -->
+                <div class="filter-group">
+                    <label class="filter-label">Sort by:</label>
+                    <select id="sortFilter" class="filter-select">
+                        <option value="newest">Newest First</option>
+                        <option value="oldest">Oldest First</option>
+                        <option value="name-asc">Name A-Z</option>
+                        <option value="name-desc">Name Z-A</option>
+                        <option value="popularity">Most Popular</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- View Controls -->
+            <div class="view-controls">
+                <div class="view-toggle">
+                    <button class="view-btn active" data-view="grid" aria-label="Grid view" title="Grid view">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="3" width="7" height="7"/>
+                            <rect x="14" y="3" width="7" height="7"/>
+                            <rect x="14" y="14" width="7" height="7"/>
+                            <rect x="3" y="14" width="7" height="7"/>
+                        </svg>
+                    </button>
+                    <button class="view-btn" data-view="list" aria-label="List view" title="List view">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="8" y1="6" x2="21" y2="6"/>
+                            <line x1="8" y1="12" x2="21" y2="12"/>
+                            <line x1="8" y1="18" x2="21" y2="18"/>
+                            <line x1="3" y1="6" x2="3.01" y2="6"/>
+                            <line x1="3" y1="12" x2="3.01" y2="12"/>
+                            <line x1="3" y1="18" x2="3.01" y2="18"/>
+                        </svg>
+                    </button>
+                </div>
+
+                <button class="filter-reset-btn" id="resetFilters" title="Reset all filters">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="23,4 23,10 17,10"/>
+                        <polyline points="1,20 1,14 7,14"/>
+                        <path d="m20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4-4.64 4.36A9 9 0 0 1 3.51 15"/>
+                    </svg>
+                    Reset
+                </button>
+            </div>
+        </div>
+
+        <!-- Active Filters Display -->
+        <div class="active-filters" id="activeFilters">
+            <span class="filters-label">Active filters:</span>
+            <div class="filter-tags" id="filterTags">
+                <!-- Filter tags will be dynamically inserted here -->
+            </div>
+        </div>
+
+        <!-- Results Info -->
+        <div class="results-info">
+            <span class="results-count" id="resultsCount">Showing 24 of 24 projects</span>
+            <div class="results-actions">
+                <button class="action-btn" id="shuffleProjects" title="Shuffle projects">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="16,3 21,3 21,8"/>
+                        <line x1="4" y1="20" x2="21" y2="3"/>
+                        <polyline points="21,16 21,21 16,21"/>
+                        <line x1="15" y1="15" x2="21" y2="21"/>
+                        <line x1="4" y1="4" x2="9" y2="9"/>
+                    </svg>
+                    Shuffle
+                </button>
+            </div>
+        </div>
+
+        <!-- Projects Grid -->
+        <div class="projects-grid" id="projectsGridContainer">
+            <!-- Loading State -->
+            <div class="projects-loading" id="projectsLoading">
+                <div class="loading-spinner"></div>
+                <p class="loading-text">Loading amazing projects...</p>
+            </div>
+
+            <!-- Project Cards Container -->
+            <div class="projects-list" id="projectsList">
+                <!-- Sample Project Cards (these would be dynamically generated) -->
+                
+                <!-- Project Card 1 -->
+                <article class="project-card" data-category="mobile" data-technologies="flutter,dart,firebase" data-date="2024-01-15" data-popularity="95">
+                    <div class="card-image">
+                        <img src="../../assets/images/projects/project-1.jpg" alt="E-Commerce Mobile App" loading="lazy">
+                        <div class="image-overlay">
+                            <div class="overlay-content">
+                                <button class="preview-btn" aria-label="Quick preview">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                                        <circle cx="12" cy="12" r="3"/>
+                                    </svg>
+                                </button>
+                                <a href="project-detail.html?id=1" class="view-btn" aria-label="View project details">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card-content">
+                        <div class="card-header">
+                            <h3 class="project-title">E-Commerce Mobile App</h3>
+                            <div class="project-status status-completed">Completed</div>
+                        </div>
+                        
+                        <p class="project-description">
+                            A full-featured e-commerce mobile application built with Flutter, 
+                            featuring user authentication, product catalog, shopping cart, and payment integration.
+                        </p>
+                        
+                        <div class="project-technologies">
+                            <span class="tech-tag">Flutter</span>
+                            <span class="tech-tag">Dart</span>
+                            <span class="tech-tag">Firebase</span>
+                            <span class="tech-tag">Stripe</span>
+                        </div>
+                        
+                        <div class="card-footer">
+                            <div class="project-meta">
+                                <span class="meta-item">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/>
+                                    </svg>
+                                    Jan 2024
+                                </span>
+                                <span class="meta-item">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M20 6L9 17l-5-5"/>
+                                    </svg>
+                                    Mobile App
+                                </span>
+                            </div>
+                            
+                            <div class="project-links">
+                                <a href="https://github.com/project-1" class="project-link github" target="_blank" rel="noopener noreferrer" aria-label="View on GitHub">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                                    </svg>
+                                </a>
+                                <a href="https://demo.project-1.com" class="project-link demo" target="_blank" rel="noopener noreferrer" aria-label="View live demo">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Project Card 2 -->
+                <article class="project-card" data-category="web" data-technologies="react,nodejs,javascript" data-date="2023-12-10" data-popularity="88">
+                    <div class="card-image">
+                        <img src="../../assets/images/projects/project-2.jpg" alt="Task Management Dashboard" loading="lazy">
+                        <div class="image-overlay">
+                            <div class="overlay-content">
+                                <button class="preview-btn" aria-label="Quick preview">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                                        <circle cx="12" cy="12" r="3"/>
+                                    </svg>
+                                </button>
+                                <a href="project-detail.html?id=2" class="view-btn" aria-label="View project details">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card-content">
+                        <div class="card-header">
+                            <h3 class="project-title">Task Management Dashboard</h3>
+                            <div class="project-status status-in-progress">In Progress</div>
+                        </div>
+                        
+                        <p class="project-description">
+                            A comprehensive task management dashboard with real-time collaboration, 
+                            analytics, and team productivity insights built with React and Node.js.
+                        </p>
+                        
+                        <div class="project-technologies">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">MongoDB</span>
+                            <span class="tech-tag">Socket.io</span>
+                        </div>
+                        
+                        <div class="card-footer">
+                            <div class="project-meta">
+                                <span class="meta-item">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/>
+                                    </svg>
+                                    Dec 2023
+                                </span>
+                                <span class="meta-item">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M20 6L9 17l-5-5"/>
+                                    </svg>
+                                    Web App
+                                </span>
+                            </div>
+                            
+                            <div class="project-links">
+                                <a href="https://github.com/project-2" class="project-link github" target="_blank" rel="noopener noreferrer" aria-label="View on GitHub">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                                    </svg>
+                                </a>
+                                <a href="https://demo.project-2.com" class="project-link demo" target="_blank" rel="noopener noreferrer" aria-label="View live demo">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- More project cards would be added here... -->
+            </div>
+
+            <!-- No Results Message -->
+            <div class="no-results hidden" id="noResults">
+                <div class="no-results-icon">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"/>
+                        <path d="m21 21-4.35-4.35"/>
+                    </svg>
+                </div>
+                <h3 class="no-results-title">No projects found</h3>
+                <p class="no-results-message">Try adjusting your search terms or filters to find what you're looking for.</p>
+                <button class="btn btn-primary" id="clearFiltersBtn">Clear All Filters</button>
+            </div>
+        </div>
+
+        <!-- Load More -->
+        <div class="load-more-container" id="loadMoreContainer">
+            <button class="btn btn-outline load-more-btn" id="loadMoreBtn">
+                <span class="btn-text">Load More Projects</span>
+                <svg class="btn-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="12" y1="5" x2="12" y2="19"/>
+                    <polyline points="19,12 12,19 5,12"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- Project Preview Modal -->
+    <div class="project-preview-modal" id="projectPreviewModal">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose" aria-label="Close preview">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"/>
+                    <line x1="6" y1="6" x2="18" y2="18"/>
+                </svg>
+            </button>
+            
+            <div class="modal-body" id="modalBody">
+                <!-- Preview content will be dynamically loaded here -->
+            </div>
+        </div>
+    </div>
+</section>
