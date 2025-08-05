@@ -1,1 +1,0 @@
-"# mesog_portfolio" 
