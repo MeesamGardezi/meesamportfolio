@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- Primary Meta Tags -->
+    <title>Dream Maker Developer | Turning Your Vision Into Reality</title>
+    <meta name="title" content="Dream Maker Developer | Turning Your Vision Into Reality">
+    <meta name="description" content="I can make your dreams come true. From concept to reality - I turn your boldest ideas into powerful digital solutions. Full-stack development, mobile apps, and custom solutions.">
+    <meta name="keywords" content="web developer, full-stack developer, mobile app development, custom software, digital solutions, react developer, firebase developer">
+    <meta name="author" content="Dream Maker Developer">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://dreammaker.dev/">
+    <meta property="og:title" content="Dream Maker Developer | Turning Your Vision Into Reality">
+    <meta property="og:description" content="I can make your dreams come true. From concept to reality - I turn your boldest ideas into powerful digital solutions.">
+    <meta property="og:image" content="https://dreammaker.dev/assets/images/og-image.jpg">
+    <meta property="og:site_name" content="Dream Maker Developer">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://dreammaker.dev/">
+    <meta property="twitter:title" content="Dream Maker Developer | Turning Your Vision Into Reality">
+    <meta property="twitter:description" content="I can make your dreams come true. From concept to reality - I turn your boldest ideas into powerful digital solutions.">
+    <meta property="twitter:image" content="https://dreammaker.dev/assets/images/og-image.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/manifest.json">
+    
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#1a1a2e">
+    <meta name="msapplication-TileColor" content="#1a1a2e">
+    
+    <!-- Critical CSS (Inline for performance) -->
+    <style>
+        /* Critical above-the-fold styles */
+        :root {
+            --primary-color: #1a1a2e;
+            --secondary-color: #16213e;
+            --accent-color: #0f3460;
+            --highlight-color: #e94560;
+            --text-primary: #ffffff;
+            --text-secondary: #b8b8d0;
+            --gold-accent: #ffd700;
+            --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-accent: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background-color: var(--primary-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Loading Screen */
+        #app-loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--primary-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease-out;
+        }
+        
+        .loader-content {
+            text-align: center;
+        }
+        
+        .loader-logo {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+        
+        .loader-text {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+        
+        .loader-progress {
+            width: 200px;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+            overflow: hidden;
+            margin: 0 auto;
+        }
+        
+        .loader-progress-bar {
+            height: 100%;
+            background: var(--gradient-primary);
+            width: 0%;
+            animation: loading 2s ease-out forwards;
+            border-radius: 3px;
+        }
+        
+        @keyframes loading {
+            0% { width: 0%; }
+            100% { width: 100%; }
+        }
+        
+        /* App Container */
+        #app {
+            opacity: 0;
+            transition: opacity 0.5s ease-in;
+        }
+        
+        #app.loaded {
+            opacity: 1;
+        }
+        
+        /* Hide elements until loaded */
+        .lazy-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        
+        .lazy-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Noscript Styles */
+        .noscript-message {
+            background: var(--highlight-color);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 10000;
+        }
+    </style>
+    
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://firebasestorage.googleapis.com">
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    
+    <!-- Main Stylesheets (loaded asynchronously) -->
+    <link rel="preload" href="/src/assets/styles/main.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/src/assets/styles/main.css"></noscript>
+    
+    <!-- Google Fonts -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-storage-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-performance-compat.js"></script>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="app-loader" role="status" aria-live="polite">
+        <div class="loader-content">
+            <div class="loader-logo">
+                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="50" cy="50" r="45" fill="none" stroke="url(#gradient)" stroke-width="2"/>
+                    <path d="M30 50 L45 65 L70 35" stroke="url(#gradient)" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                    <defs>
+                        <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                </svg>
+            </div>
+            <div class="loader-text">Making dreams come true...</div>
+            <div class="loader-progress">
+                <div class="loader-progress-bar"></div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- NoScript Message -->
+    <noscript>
+        <div class="noscript-message">
+            <strong>JavaScript is required</strong> to experience the full magic of this portfolio. Please enable JavaScript in your browser settings.
+        </div>
+    </noscript>
+    
+    <!-- Main Application Container -->
+    <div id="app" role="main">
+        <!-- Header Component Mount Point -->
+        <header id="header-mount" class="site-header" role="banner"></header>
+        
+        <!-- Navigation Component Mount Point -->
+        <nav id="nav-mount" class="main-navigation" role="navigation" aria-label="Main navigation"></nav>
+        
+        <!-- Mobile Navigation Mount Point -->
+        <div id="mobile-nav-mount" class="mobile-navigation" aria-label="Mobile navigation"></div>
+        
+        <!-- Main Content Area -->
+        <main id="main-content" class="site-main">
+            <!-- Dynamic Page Content Loads Here -->
+            <div id="page-mount" class="page-container">
+                <!-- Home Page Sections (Initial Load) -->
+                <section id="hero-section" class="lazy-section" data-component="hero"></section>
+                <section id="about-preview-section" class="lazy-section" data-component="about-preview"></section>
+                <section id="process-section" class="lazy-section" data-component="process"></section>
+                <section id="featured-projects-section" class="lazy-section" data-component="featured-projects"></section>
+                <section id="services-overview-section" class="lazy-section" data-component="services-overview"></section>
+                <section id="testimonials-section" class="lazy-section" data-component="testimonials"></section>
+                <section id="tech-arsenal-section" class="lazy-section" data-component="tech-arsenal"></section>
+                <section id="main-cta-section" class="lazy-section" data-component="main-cta"></section>
+            </div>
+        </main>
+        
+        <!-- Footer Component Mount Point -->
+        <footer id="footer-mount" class="site-footer" role="contentinfo"></footer>
+        
+        <!-- Modal Container for Dynamic Modals -->
+        <div id="modal-container" class="modal-container" aria-hidden="true"></div>
+        
+        <!-- Toast Notifications Container -->
+        <div id="toast-container" class="toast-container" role="status" aria-live="polite"></div>
+    </div>
+    
+    <!-- Core Application Scripts -->
+    <script src="/src/config/firebase-config.js"></script>
+    <script src="/src/assets/scripts/core/utils.js"></script>
+    <script src="/src/assets/scripts/core/component-loader.js"></script>
+    <script src="/src/assets/scripts/core/router.js"></script>
+    <script src="/src/assets/scripts/core/app.js"></script>
+    
+    <!-- Initialize Application -->
+    <script>
+        // Initialize the application when DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initializeApp);
+        } else {
+            initializeApp();
+        }
+        
+        function initializeApp() {
+            // Initialize Dream Maker Portfolio App
+            window.DreamMakerApp = new App();
+            window.DreamMakerApp.init();
+        }
+        
+        // Remove loader when app is ready
+        window.addEventListener('app:ready', function() {
+            const loader = document.getElementById('app-loader');
+            const app = document.getElementById('app');
+            
+            setTimeout(() => {
+                loader.style.opacity = '0';
+                app.classList.add('loaded');
+                
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                }, 500);
+            }, 500);
+        });
+    </script>
+    
+    <!-- Performance Monitoring -->
+    <script>
+        // Log Core Web Vitals
+        if ('PerformanceObserver' in window) {
+            try {
+                const po = new PerformanceObserver((list) => {
+                    for (const entry of list.getEntries()) {
+                        // Log to Firebase Analytics if available
+                        if (window.firebase && window.firebase.analytics) {
+                            window.firebase.analytics().logEvent('web_vitals', {
+                                metric_name: entry.name,
+                                metric_value: Math.round(entry.startTime + entry.duration)
+                            });
+                        }
+                    }
+                });
+                po.observe({ type: 'largest-contentful-paint', buffered: true });
+            } catch (e) {
+                // Silently fail if not supported
+            }
+        }
+    </script>
+</body>
+</html>

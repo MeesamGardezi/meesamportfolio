@@ -1,288 +1,275 @@
 @echo off
-echo Creating Portfolio Website Structure...
+setlocal enabledelayedexpansion
 
-:: Create main directory
-mkdir portfolio-website
-cd portfolio-website
+echo ========================================
+echo Portfolio Website Structure Generator
+echo "Dream Maker Developer" Project Setup
+echo ========================================
+echo.
 
-:: Create layouts directory structure
-mkdir layouts\base
-mkdir layouts\page
-mkdir layouts\admin
+:: Set the root project directory name
+set PROJECT_ROOT=portfolio-website
 
-:: Create layouts files
-echo. > layouts\base\base.html
-echo. > layouts\base\base.css
-echo. > layouts\base\base.js
-echo. > layouts\page\page.html
-echo. > layouts\page\page.css
-echo. > layouts\page\page.js
-echo. > layouts\admin\admin.html
-echo. > layouts\admin\admin.css
-echo. > layouts\admin\admin.js
+:: Create root directory
+echo Creating root directory: %PROJECT_ROOT%
+mkdir "%PROJECT_ROOT%" 2>nul
+cd "%PROJECT_ROOT%"
 
-:: Create components directory structure
-mkdir components\navigation\navbar
-mkdir components\navigation\footer
-mkdir components\navigation\breadcrumb
-mkdir components\ui\button
-mkdir components\ui\modal
-mkdir components\ui\notification
-mkdir components\ui\loading
-mkdir components\ui\pagination
-mkdir components\forms\contact-form
-mkdir components\forms\project-form
-mkdir components\forms\login-form
-mkdir components\forms\search-form
-mkdir components\cards\project-card
-mkdir components\cards\skill-card
-mkdir components\cards\stats-card
-mkdir components\gallery\image-gallery
-mkdir components\gallery\lightbox
-mkdir components\gallery\thumbnail-grid
-mkdir components\filters\project-filter
-mkdir components\filters\search-filter
+echo.
+echo Creating directory structure...
+echo ----------------------------------------
 
-:: Create navigation components
-echo. > components\navigation\navbar\navbar.html
-echo. > components\navigation\navbar\navbar.css
-echo. > components\navigation\navbar\navbar.js
-echo. > components\navigation\footer\footer.html
-echo. > components\navigation\footer\footer.css
-echo. > components\navigation\footer\footer.js
-echo. > components\navigation\breadcrumb\breadcrumb.html
-echo. > components\navigation\breadcrumb\breadcrumb.css
-echo. > components\navigation\breadcrumb\breadcrumb.js
+:: Create public directory and files
+echo [PUBLIC]
+mkdir "public" 2>nul
+type nul > "public\index.html"
+type nul > "public\favicon.ico"
+type nul > "public\manifest.json"
+type nul > "public\robots.txt"
+type nul > "public\sitemap.xml"
+echo   Created: public\ with core files
+
+:: Create src/assets structure
+echo [ASSETS]
+mkdir "src\assets\styles\core" 2>nul
+type nul > "src\assets\styles\core\variables.css"
+type nul > "src\assets\styles\core\reset.css"
+type nul > "src\assets\styles\core\typography.css"
+type nul > "src\assets\styles\core\layout.css"
+type nul > "src\assets\styles\core\animations.css"
+echo   Created: styles\core\
+
+mkdir "src\assets\styles\components" 2>nul
+type nul > "src\assets\styles\components\buttons.css"
+type nul > "src\assets\styles\components\forms.css"
+type nul > "src\assets\styles\components\cards.css"
+type nul > "src\assets\styles\components\modals.css"
+type nul > "src\assets\styles\main.css"
+echo   Created: styles\components\
+
+mkdir "src\assets\scripts\core" 2>nul
+type nul > "src\assets\scripts\core\app.js"
+type nul > "src\assets\scripts\core\router.js"
+type nul > "src\assets\scripts\core\component-loader.js"
+type nul > "src\assets\scripts\core\utils.js"
+echo   Created: scripts\core\
+
+mkdir "src\assets\scripts\services" 2>nul
+type nul > "src\assets\scripts\services\firebase-config.js"
+type nul > "src\assets\scripts\services\firebase-projects.js"
+type nul > "src\assets\scripts\services\firebase-storage.js"
+type nul > "src\assets\scripts\services\firebase-analytics.js"
+type nul > "src\assets\scripts\services\api-service.js"
+echo   Created: scripts\services\
+
+mkdir "src\assets\scripts\modules" 2>nul
+type nul > "src\assets\scripts\modules\animation-controller.js"
+type nul > "src\assets\scripts\modules\form-handler.js"
+type nul > "src\assets\scripts\modules\search-filter.js"
+type nul > "src\assets\scripts\modules\lazy-loader.js"
+echo   Created: scripts\modules\
+
+mkdir "src\assets\images\static" 2>nul
+mkdir "src\assets\images\placeholders" 2>nul
+mkdir "src\assets\images\compressed" 2>nul
+echo   Created: images directories
+
+mkdir "src\assets\fonts\primary-font" 2>nul
+mkdir "src\assets\fonts\secondary-font" 2>nul
+mkdir "src\assets\fonts\icon-font" 2>nul
+echo   Created: fonts directories
+
+:: Create components structure
+echo [COMPONENTS]
+mkdir "src\components\layout\header" 2>nul
+type nul > "src\components\layout\header\header.html"
+type nul > "src\components\layout\header\header.css"
+type nul > "src\components\layout\header\header.js"
+echo   Created: layout\header\
+
+mkdir "src\components\layout\navigation" 2>nul
+type nul > "src\components\layout\navigation\main-nav.html"
+type nul > "src\components\layout\navigation\main-nav.css"
+type nul > "src\components\layout\navigation\main-nav.js"
+type nul > "src\components\layout\navigation\mobile-nav.html"
+type nul > "src\components\layout\navigation\mobile-nav.js"
+echo   Created: layout\navigation\
+
+mkdir "src\components\layout\footer" 2>nul
+type nul > "src\components\layout\footer\footer.html"
+type nul > "src\components\layout\footer\footer.css"
+type nul > "src\components\layout\footer\footer.js"
+echo   Created: layout\footer\
 
 :: Create UI components
-echo. > components\ui\button\button.html
-echo. > components\ui\button\button.css
-echo. > components\ui\button\button.js
-echo. > components\ui\modal\modal.html
-echo. > components\ui\modal\modal.css
-echo. > components\ui\modal\modal.js
-echo. > components\ui\notification\notification.html
-echo. > components\ui\notification\notification.css
-echo. > components\ui\notification\notification.js
-echo. > components\ui\loading\loading.html
-echo. > components\ui\loading\loading.css
-echo. > components\ui\loading\loading.js
-echo. > components\ui\pagination\pagination.html
-echo. > components\ui\pagination\pagination.css
-echo. > components\ui\pagination\pagination.js
+mkdir "src\components\ui\loading-spinner" 2>nul
+mkdir "src\components\ui\modal" 2>nul
+mkdir "src\components\ui\toast-notification" 2>nul
+mkdir "src\components\ui\image-gallery" 2>nul
+mkdir "src\components\ui\contact-form" 2>nul
+mkdir "src\components\ui\search-bar" 2>nul
+echo   Created: ui components directories
 
-:: Create form components
-echo. > components\forms\contact-form\contact-form.html
-echo. > components\forms\contact-form\contact-form.css
-echo. > components\forms\contact-form\contact-form.js
-echo. > components\forms\project-form\project-form.html
-echo. > components\forms\project-form\project-form.css
-echo. > components\forms\project-form\project-form.js
-echo. > components\forms\login-form\login-form.html
-echo. > components\forms\login-form\login-form.css
-echo. > components\forms\login-form\login-form.js
-echo. > components\forms\search-form\search-form.html
-echo. > components\forms\search-form\search-form.css
-echo. > components\forms\search-form\search-form.js
+:: Create business components
+mkdir "src\components\business\project-card" 2>nul
+mkdir "src\components\business\testimonial-card" 2>nul
+mkdir "src\components\business\service-card" 2>nul
+mkdir "src\components\business\tech-stack-display" 2>nul
+mkdir "src\components\business\process-timeline" 2>nul
+echo   Created: business components directories
 
-:: Create card components
-echo. > components\cards\project-card\project-card.html
-echo. > components\cards\project-card\project-card.css
-echo. > components\cards\project-card\project-card.js
-echo. > components\cards\skill-card\skill-card.html
-echo. > components\cards\skill-card\skill-card.css
-echo. > components\cards\skill-card\skill-card.js
-echo. > components\cards\stats-card\stats-card.html
-echo. > components\cards\stats-card\stats-card.css
-echo. > components\cards\stats-card\stats-card.js
-
-:: Create gallery components
-echo. > components\gallery\image-gallery\image-gallery.html
-echo. > components\gallery\image-gallery\image-gallery.css
-echo. > components\gallery\image-gallery\image-gallery.js
-echo. > components\gallery\lightbox\lightbox.html
-echo. > components\gallery\lightbox\lightbox.css
-echo. > components\gallery\lightbox\lightbox.js
-echo. > components\gallery\thumbnail-grid\thumbnail-grid.html
-echo. > components\gallery\thumbnail-grid\thumbnail-grid.css
-echo. > components\gallery\thumbnail-grid\thumbnail-grid.js
-
-:: Create filter components
-echo. > components\filters\project-filter\project-filter.html
-echo. > components\filters\project-filter\project-filter.css
-echo. > components\filters\project-filter\project-filter.js
-echo. > components\filters\search-filter\search-filter.html
-echo. > components\filters\search-filter\search-filter.css
-echo. > components\filters\search-filter\search-filter.js
-
-:: Create sections directory structure
-mkdir sections\home\hero
-mkdir sections\home\about
-mkdir sections\home\skills
-mkdir sections\home\featured-projects
-mkdir sections\home\contact
-mkdir sections\projects\projects-header
-mkdir sections\projects\projects-grid
-mkdir sections\projects\projects-sidebar
-mkdir sections\project-detail\project-header
-mkdir sections\project-detail\project-gallery
-mkdir sections\project-detail\project-content
-mkdir sections\project-detail\project-sidebar
-mkdir sections\project-detail\related-projects
-mkdir sections\contact\contact-header
-mkdir sections\contact\contact-info
-mkdir sections\contact\social-links
-mkdir sections\admin\dashboard
-mkdir sections\admin\projects-management
-mkdir sections\admin\contacts-management
-mkdir sections\admin\analytics
+:: Create pages - Home
+echo [PAGES]
+mkdir "src\pages\home" 2>nul
+type nul > "src\pages\home\index.html"
+type nul > "src\pages\home\home.css"
+type nul > "src\pages\home\home.js"
+echo   Created: pages\home\
 
 :: Create home sections
-echo. > sections\home\hero\hero.html
-echo. > sections\home\hero\hero.css
-echo. > sections\home\hero\hero.js
-echo. > sections\home\about\about.html
-echo. > sections\home\about\about.css
-echo. > sections\home\about\about.js
-echo. > sections\home\skills\skills.html
-echo. > sections\home\skills\skills.css
-echo. > sections\home\skills\skills.js
-echo. > sections\home\featured-projects\featured-projects.html
-echo. > sections\home\featured-projects\featured-projects.css
-echo. > sections\home\featured-projects\featured-projects.js
-echo. > sections\home\contact\contact.html
-echo. > sections\home\contact\contact.css
-echo. > sections\home\contact\contact.js
+mkdir "src\pages\home\sections\hero" 2>nul
+type nul > "src\pages\home\sections\hero\hero.html"
+type nul > "src\pages\home\sections\hero\hero.css"
+type nul > "src\pages\home\sections\hero\hero.js"
 
-:: Create projects sections
-echo. > sections\projects\projects-header\projects-header.html
-echo. > sections\projects\projects-header\projects-header.css
-echo. > sections\projects\projects-header\projects-header.js
-echo. > sections\projects\projects-grid\projects-grid.html
-echo. > sections\projects\projects-grid\projects-grid.css
-echo. > sections\projects\projects-grid\projects-grid.js
-echo. > sections\projects\projects-sidebar\projects-sidebar.html
-echo. > sections\projects\projects-sidebar\projects-sidebar.css
-echo. > sections\projects\projects-sidebar\projects-sidebar.js
+mkdir "src\pages\home\sections\about-preview" 2>nul
+type nul > "src\pages\home\sections\about-preview\about-preview.html"
+type nul > "src\pages\home\sections\about-preview\about-preview.css"
+type nul > "src\pages\home\sections\about-preview\about-preview.js"
 
-:: Create project-detail sections
-echo. > sections\project-detail\project-header\project-header.html
-echo. > sections\project-detail\project-header\project-header.css
-echo. > sections\project-detail\project-header\project-header.js
-echo. > sections\project-detail\project-gallery\project-gallery.html
-echo. > sections\project-detail\project-gallery\project-gallery.css
-echo. > sections\project-detail\project-gallery\project-gallery.js
-echo. > sections\project-detail\project-content\project-content.html
-echo. > sections\project-detail\project-content\project-content.css
-echo. > sections\project-detail\project-content\project-content.js
-echo. > sections\project-detail\project-sidebar\project-sidebar.html
-echo. > sections\project-detail\project-sidebar\project-sidebar.css
-echo. > sections\project-detail\project-sidebar\project-sidebar.js
-echo. > sections\project-detail\related-projects\related-projects.html
-echo. > sections\project-detail\related-projects\related-projects.css
-echo. > sections\project-detail\related-projects\related-projects.js
+mkdir "src\pages\home\sections\process" 2>nul
+type nul > "src\pages\home\sections\process\process.html"
+type nul > "src\pages\home\sections\process\process.css"
+type nul > "src\pages\home\sections\process\process.js"
 
-:: Create contact sections
-echo. > sections\contact\contact-header\contact-header.html
-echo. > sections\contact\contact-header\contact-header.css
-echo. > sections\contact\contact-header\contact-header.js
-echo. > sections\contact\contact-info\contact-info.html
-echo. > sections\contact\contact-info\contact-info.css
-echo. > sections\contact\contact-info\contact-info.js
-echo. > sections\contact\social-links\social-links.html
-echo. > sections\contact\social-links\social-links.css
-echo. > sections\contact\social-links\social-links.js
+mkdir "src\pages\home\sections\featured-projects" 2>nul
+type nul > "src\pages\home\sections\featured-projects\featured-projects.html"
+type nul > "src\pages\home\sections\featured-projects\featured-projects.css"
+type nul > "src\pages\home\sections\featured-projects\featured-projects.js"
 
-:: Create admin sections
-echo. > sections\admin\dashboard\dashboard.html
-echo. > sections\admin\dashboard\dashboard.css
-echo. > sections\admin\dashboard\dashboard.js
-echo. > sections\admin\projects-management\projects-management.html
-echo. > sections\admin\projects-management\projects-management.css
-echo. > sections\admin\projects-management\projects-management.js
-echo. > sections\admin\contacts-management\contacts-management.html
-echo. > sections\admin\contacts-management\contacts-management.css
-echo. > sections\admin\contacts-management\contacts-management.js
-echo. > sections\admin\analytics\analytics.html
-echo. > sections\admin\analytics\analytics.css
-echo. > sections\admin\analytics\analytics.js
+mkdir "src\pages\home\sections\services-overview" 2>nul
+type nul > "src\pages\home\sections\services-overview\services-overview.html"
+type nul > "src\pages\home\sections\services-overview\services-overview.css"
+type nul > "src\pages\home\sections\services-overview\services-overview.js"
 
-:: Create pages directory structure
-mkdir pages\home
-mkdir pages\projects
-mkdir pages\project-detail
-mkdir pages\contact
-mkdir pages\admin
+mkdir "src\pages\home\sections\testimonials" 2>nul
+type nul > "src\pages\home\sections\testimonials\testimonials.html"
+type nul > "src\pages\home\sections\testimonials\testimonials.css"
+type nul > "src\pages\home\sections\testimonials\testimonials.js"
 
-:: Create page files
-echo. > pages\home\index.html
-echo. > pages\home\index.css
-echo. > pages\home\index.js
-echo. > pages\projects\projects.html
-echo. > pages\projects\projects.css
-echo. > pages\projects\projects.js
-echo. > pages\project-detail\project-detail.html
-echo. > pages\project-detail\project-detail.css
-echo. > pages\project-detail\project-detail.js
-echo. > pages\contact\contact.html
-echo. > pages\contact\contact.css
-echo. > pages\contact\contact.js
-echo. > pages\admin\admin.html
-echo. > pages\admin\admin.css
-echo. > pages\admin\admin.js
+mkdir "src\pages\home\sections\tech-arsenal" 2>nul
+type nul > "src\pages\home\sections\tech-arsenal\tech-arsenal.html"
+type nul > "src\pages\home\sections\tech-arsenal\tech-arsenal.css"
+type nul > "src\pages\home\sections\tech-arsenal\tech-arsenal.js"
 
-:: Create core directory structure
-mkdir core\styles
-mkdir core\scripts
-mkdir core\config
+mkdir "src\pages\home\sections\main-cta" 2>nul
+type nul > "src\pages\home\sections\main-cta\main-cta.html"
+type nul > "src\pages\home\sections\main-cta\main-cta.css"
+type nul > "src\pages\home\sections\main-cta\main-cta.js"
+echo   Created: home page sections
 
-:: Create core files
-echo. > core\styles\variables.css
-echo. > core\styles\reset.css
-echo. > core\styles\typography.css
-echo. > core\styles\utilities.css
-echo. > core\styles\animations.css
-echo. > core\scripts\utils.js
-echo. > core\scripts\firebase.js
-echo. > core\scripts\router.js
-echo. > core\scripts\component-loader.js
-echo. > core\scripts\template-engine.js
-echo. > core\config\env.js
-echo. > core\config\constants.js
-echo. > core\config\firebase-config.js
+:: Create projects pages
+mkdir "src\pages\projects\all-projects" 2>nul
+type nul > "src\pages\projects\all-projects\index.html"
+type nul > "src\pages\projects\all-projects\all-projects.css"
+type nul > "src\pages\projects\all-projects\all-projects.js"
 
-:: Create assets directory structure
-mkdir assets\images
-mkdir assets\icons
-mkdir assets\fonts
-mkdir assets\static
+mkdir "src\pages\projects\project-detail" 2>nul
+type nul > "src\pages\projects\project-detail\index.html"
+type nul > "src\pages\projects\project-detail\project-detail.css"
+type nul > "src\pages\projects\project-detail\project-detail.js"
+echo   Created: projects pages
 
-:: Create build directory structure
-mkdir build\components
-mkdir build\pages
-mkdir build\assets
+:: Create other pages
+mkdir "src\pages\about" 2>nul
+type nul > "src\pages\about\index.html"
+type nul > "src\pages\about\about.css"
+type nul > "src\pages\about\about.js"
 
-:: Create tools directory
-mkdir tools
+mkdir "src\pages\services" 2>nul
+type nul > "src\pages\services\index.html"
+type nul > "src\pages\services\services.css"
+type nul > "src\pages\services\services.js"
 
-:: Create tools files
-echo. > tools\build.js
-echo. > tools\component-compiler.js
-echo. > tools\dev-server.js
-echo. > tools\deploy.js
+mkdir "src\pages\contact" 2>nul
+type nul > "src\pages\contact\index.html"
+type nul > "src\pages\contact\contact.css"
+type nul > "src\pages\contact\contact.js"
+echo   Created: about, services, contact pages
 
-:: Create root files
-echo. > index.html
-echo. > package.json
-echo. > README.md
-echo. > .gitignore
+:: Create admin pages
+mkdir "src\pages\admin\dashboard" 2>nul
+mkdir "src\pages\admin\project-manager" 2>nul
+mkdir "src\pages\admin\testimonial-manager" 2>nul
+mkdir "src\pages\admin\analytics" 2>nul
+echo   Created: admin pages
+
+:: Create templates
+echo [TEMPLATES]
+mkdir "src\templates" 2>nul
+type nul > "src\templates\base.html"
+type nul > "src\templates\page-shell.html"
+type nul > "src\templates\project-template.html"
+
+mkdir "src\templates\error-pages" 2>nul
+type nul > "src\templates\error-pages\404.html"
+type nul > "src\templates\error-pages\500.html"
+echo   Created: templates
+
+:: Create config
+echo [CONFIG]
+mkdir "src\config" 2>nul
+type nul > "src\config\firebase-config.js"
+type nul > "src\config\environment.js"
+type nul > "src\config\routes.js"
+type nul > "src\config\constants.js"
+echo   Created: config files
+
+:: Create Firebase functions
+echo [FIREBASE]
+mkdir "firebase-functions\functions" 2>nul
+type nul > "firebase-functions\functions\index.js"
+type nul > "firebase-functions\functions\contact-handler.js"
+type nul > "firebase-functions\functions\analytics-processor.js"
+type nul > "firebase-functions\functions\image-optimizer.js"
+type nul > "firebase-functions\package.json"
+echo   Created: firebase-functions
+
+:: Create admin tools
+echo [ADMIN TOOLS]
+mkdir "admin-tools" 2>nul
+type nul > "admin-tools\data-seeder.js"
+type nul > "admin-tools\image-uploader.js"
+type nul > "admin-tools\backup-restore.js"
+echo   Created: admin-tools
+
+:: Create root configuration files
+echo [ROOT FILES]
+type nul > "firebase.json"
+type nul > "firestore.rules"
+type nul > "storage.rules"
+type nul > "package.json"
+type nul > ".gitignore"
+type nul > "README.md"
+echo   Created: root configuration files
 
 echo.
-echo ✅ Portfolio website structure created successfully!
+echo ========================================
+echo SETUP COMPLETE!
+echo ========================================
+echo.
+echo Project structure created successfully!
+echo Total directories: ~60+
+echo Total files: ~100+
 echo.
 echo Next steps:
-echo 1. Navigate to the portfolio-website directory
-echo 2. Set up the custom template engine
-echo 3. Create your first components
+echo 1. Navigate to: %PROJECT_ROOT%
+echo 2. Initialize npm: npm init -y
+echo 3. Install Firebase: npm install firebase firebase-admin
+echo 4. Configure Firebase: firebase init
+echo 5. Start development!
 echo.
+echo Happy coding! Let's make dreams come true!
+echo ========================================
+
 pause

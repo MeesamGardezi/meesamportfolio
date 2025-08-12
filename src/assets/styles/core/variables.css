@@ -1,0 +1,302 @@
+/**
+ * CSS Variables & Design System
+ * Dream Maker Developer Portfolio
+ * 
+ * Central design tokens for consistent theming
+ */
+
+:root {
+    /* ========== Color Palette ========== */
+    
+    /* Primary Colors - Deep space/dream theme */
+    --color-primary-900: #0a0a0f;
+    --color-primary-800: #12121f;
+    --color-primary-700: #1a1a2e;
+    --color-primary-600: #16213e;
+    --color-primary-500: #0f3460;
+    --color-primary-400: #1e4976;
+    --color-primary-300: #2d5f8d;
+    --color-primary-200: #4b7ba8;
+    --color-primary-100: #6997c3;
+    
+    /* Secondary Colors - Dream to reality transformation */
+    --color-secondary-900: #2d1b69;
+    --color-secondary-800: #3d2d7c;
+    --color-secondary-700: #4d3f8f;
+    --color-secondary-600: #5d51a2;
+    --color-secondary-500: #6d63b5;
+    --color-secondary-400: #8177c3;
+    --color-secondary-300: #958bd1;
+    --color-secondary-200: #a99fdf;
+    --color-secondary-100: #bdb3ed;
+    
+    /* Accent Colors - Energy and achievement */
+    --color-accent-primary: #e94560;
+    --color-accent-secondary: #ff6b6b;
+    --color-accent-tertiary: #4ecdc4;
+    --color-accent-success: #06ffa5;
+    --color-accent-warning: #ffb800;
+    --color-accent-error: #ff3838;
+    --color-accent-info: #00b4d8;
+    
+    /* Gold/Achievement Colors */
+    --color-gold-primary: #ffd700;
+    --color-gold-secondary: #ffed4e;
+    --color-gold-tertiary: #fff59d;
+    
+    /* Neutral Colors */
+    --color-neutral-900: #0a0a0a;
+    --color-neutral-800: #1a1a1a;
+    --color-neutral-700: #2a2a2a;
+    --color-neutral-600: #3a3a3a;
+    --color-neutral-500: #4a4a4a;
+    --color-neutral-400: #6a6a6a;
+    --color-neutral-300: #8a8a8a;
+    --color-neutral-200: #aaaaaa;
+    --color-neutral-100: #cacaca;
+    --color-neutral-50: #f0f0f0;
+    --color-white: #ffffff;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    --gradient-accent: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    --gradient-dark: linear-gradient(180deg, var(--color-primary-900) 0%, var(--color-primary-700) 100%);
+    --gradient-hero: radial-gradient(ellipse at top, var(--color-primary-600) 0%, var(--color-primary-900) 100%);
+    --gradient-gold: linear-gradient(135deg, #ffd700 0%, #ffed4e 50%, #ffd700 100%);
+    --gradient-text: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f5576c 100%);
+    
+    /* ========== Typography ========== */
+    
+    /* Font Families */
+    --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    --font-heading: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-mono: 'Fira Code', 'Courier New', Courier, monospace;
+    
+    /* Font Sizes - Desktop */
+    --font-size-hero: clamp(3rem, 8vw, 5.5rem);
+    --font-size-xxl: clamp(2.5rem, 5vw, 3.5rem);
+    --font-size-xl: clamp(2rem, 4vw, 2.5rem);
+    --font-size-lg: clamp(1.5rem, 3vw, 1.875rem);
+    --font-size-md: clamp(1.125rem, 2vw, 1.25rem);
+    --font-size-base: 1rem;
+    --font-size-sm: 0.875rem;
+    --font-size-xs: 0.75rem;
+    
+    /* Font Weights */
+    --font-weight-thin: 300;
+    --font-weight-regular: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+    --font-weight-black: 800;
+    
+    /* Line Heights */
+    --line-height-tight: 1.1;
+    --line-height-snug: 1.3;
+    --line-height-normal: 1.6;
+    --line-height-relaxed: 1.8;
+    --line-height-loose: 2;
+    
+    /* Letter Spacing */
+    --letter-spacing-tighter: -0.05em;
+    --letter-spacing-tight: -0.025em;
+    --letter-spacing-normal: 0;
+    --letter-spacing-wide: 0.025em;
+    --letter-spacing-wider: 0.05em;
+    --letter-spacing-widest: 0.1em;
+    
+    /* ========== Spacing ========== */
+    
+    --spacing-3xs: 0.125rem;  /* 2px */
+    --spacing-2xs: 0.25rem;   /* 4px */
+    --spacing-xs: 0.5rem;     /* 8px */
+    --spacing-sm: 0.75rem;    /* 12px */
+    --spacing-md: 1rem;       /* 16px */
+    --spacing-lg: 1.5rem;     /* 24px */
+    --spacing-xl: 2rem;       /* 32px */
+    --spacing-2xl: 3rem;      /* 48px */
+    --spacing-3xl: 4rem;      /* 64px */
+    --spacing-4xl: 6rem;      /* 96px */
+    --spacing-5xl: 8rem;      /* 128px */
+    
+    /* Container Widths */
+    --container-xs: 20rem;     /* 320px */
+    --container-sm: 40rem;     /* 640px */
+    --container-md: 48rem;     /* 768px */
+    --container-lg: 64rem;     /* 1024px */
+    --container-xl: 80rem;     /* 1280px */
+    --container-2xl: 96rem;    /* 1536px */
+    --container-max: 1400px;
+    
+    /* ========== Layout ========== */
+    
+    /* Breakpoints */
+    --breakpoint-xs: 320px;
+    --breakpoint-sm: 640px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 1024px;
+    --breakpoint-xl: 1280px;
+    --breakpoint-2xl: 1536px;
+    
+    /* Z-Index Scale */
+    --z-base: 0;
+    --z-dropdown: 100;
+    --z-sticky: 200;
+    --z-overlay: 300;
+    --z-modal: 400;
+    --z-popover: 500;
+    --z-tooltip: 600;
+    --z-toast: 700;
+    --z-maximum: 9999;
+    
+    /* ========== Borders & Radius ========== */
+    
+    /* Border Radius */
+    --radius-none: 0;
+    --radius-sm: 0.25rem;
+    --radius-md: 0.5rem;
+    --radius-lg: 0.75rem;
+    --radius-xl: 1rem;
+    --radius-2xl: 1.5rem;
+    --radius-3xl: 2rem;
+    --radius-full: 9999px;
+    
+    /* Border Widths */
+    --border-none: 0;
+    --border-thin: 1px;
+    --border-medium: 2px;
+    --border-thick: 4px;
+    
+    /* ========== Shadows ========== */
+    
+    --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-sm: 0 2px 4px -1px rgba(0, 0, 0, 0.06), 0 1px 2px -1px rgba(0, 0, 0, 0.06);
+    --shadow-md: 0 4px 6px -2px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    --shadow-inner: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
+    
+    /* Glow Shadows */
+    --shadow-glow-sm: 0 0 10px rgba(102, 126, 234, 0.5);
+    --shadow-glow-md: 0 0 20px rgba(102, 126, 234, 0.6);
+    --shadow-glow-lg: 0 0 40px rgba(102, 126, 234, 0.7);
+    --shadow-glow-accent: 0 0 30px rgba(233, 69, 96, 0.6);
+    
+    /* ========== Animations ========== */
+    
+    /* Durations */
+    --duration-instant: 0ms;
+    --duration-fast: 150ms;
+    --duration-normal: 300ms;
+    --duration-slow: 500ms;
+    --duration-slower: 700ms;
+    --duration-slowest: 1000ms;
+    
+    /* Easing Functions */
+    --ease-linear: linear;
+    --ease-in: cubic-bezier(0.4, 0, 1, 1);
+    --ease-out: cubic-bezier(0, 0, 0.2, 1);
+    --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+    --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --ease-elastic: cubic-bezier(0.68, -0.55, 0.265, 1.85);
+    
+    /* ========== Effects ========== */
+    
+    /* Blur */
+    --blur-sm: 4px;
+    --blur-md: 8px;
+    --blur-lg: 16px;
+    --blur-xl: 24px;
+    
+    /* Opacity */
+    --opacity-0: 0;
+    --opacity-10: 0.1;
+    --opacity-20: 0.2;
+    --opacity-30: 0.3;
+    --opacity-40: 0.4;
+    --opacity-50: 0.5;
+    --opacity-60: 0.6;
+    --opacity-70: 0.7;
+    --opacity-80: 0.8;
+    --opacity-90: 0.9;
+    --opacity-100: 1;
+    
+    /* ========== Component Specific ========== */
+    
+    /* Header */
+    --header-height: 80px;
+    --header-height-mobile: 60px;
+    --header-bg: rgba(26, 26, 46, 0.95);
+    --header-blur: saturate(180%) blur(20px);
+    
+    /* Navigation */
+    --nav-link-color: var(--color-neutral-200);
+    --nav-link-hover: var(--color-white);
+    --nav-link-active: var(--color-accent-primary);
+    
+    /* Buttons */
+    --btn-padding-x: var(--spacing-lg);
+    --btn-padding-y: var(--spacing-sm);
+    --btn-radius: var(--radius-md);
+    --btn-font-weight: var(--font-weight-semibold);
+    
+    /* Cards */
+    --card-bg: rgba(255, 255, 255, 0.02);
+    --card-border: rgba(255, 255, 255, 0.1);
+    --card-padding: var(--spacing-lg);
+    --card-radius: var(--radius-lg);
+    
+    /* Forms */
+    --input-bg: rgba(255, 255, 255, 0.05);
+    --input-border: rgba(255, 255, 255, 0.2);
+    --input-focus-border: var(--color-accent-primary);
+    --input-radius: var(--radius-md);
+    --input-padding-x: var(--spacing-md);
+    --input-padding-y: var(--spacing-sm);
+    
+    /* Scrollbar */
+    --scrollbar-width: 12px;
+    --scrollbar-track: var(--color-primary-800);
+    --scrollbar-thumb: var(--color-primary-500);
+    --scrollbar-thumb-hover: var(--color-primary-400);
+}
+
+/* ========== Theme Variations ========== */
+
+/* Light theme (if needed in future) */
+[data-theme="light"] {
+    --color-primary-900: #ffffff;
+    --color-primary-800: #f8f9fa;
+    /* ... other light theme overrides */
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+    :root {
+        --color-primary-900: #000000;
+        --color-white: #ffffff;
+        --border-thin: 2px;
+    }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    :root {
+        --duration-fast: 0ms;
+        --duration-normal: 0ms;
+        --duration-slow: 0ms;
+        --duration-slower: 0ms;
+        --duration-slowest: 0ms;
+    }
+}
+
+/* Print styles */
+@media print {
+    :root {
+        --color-primary-900: #ffffff;
+        --color-primary-700: #f0f0f0;
+        --color-white: #000000;
+    }
+}
